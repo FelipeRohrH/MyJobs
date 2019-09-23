@@ -5,67 +5,62 @@ import java.util.List;
 import java.util.Random;
 
 import model.cards.Card;
+import model.cards.Guild;
 
 
 public class BoardModel {
 	
-	private static BoardModel instance;
-	
-	private Player player1;
 	private Player player2;
+	private Player player1;
 	
-	private List<Card> cardsList;
+	private List<Guild> guildList;
 	private List<Dice> dices;
 	
-	
-	private BoardModel() {
+	public BoardModel() {
 		dices = new ArrayList<Dice>(6);
-		
 	}
 	
-	public synchronized static BoardModel getInstance(){
-		if(instance == null) {
-			instance = new BoardModel();
-			return instance;
-		}else {
-			return instance;
-		}
-	}
 	
-	public void addCards() {
-
-	}
-	
-	public void removeCard(int index) {
-		cardsList.remove(index);
-	}
-	
-	public void addDices() {
-		for (int i = 0; i < dices.size(); i++) {
-			dices.set(i, new Dice());
-		}
+	/*--------Dices--------*/
+	public void addDices(Dice dice) {
+		dices.add(dice);
 	}
 	
 	public void removeDice(int index) {
 		dices.remove(index);
 	}
 	
-	public void initGameCards() {
-		cardsList.add(new Card());
-		cardsList.add(new Card());
-		cardsList.add(new Card());
-		cardsList.add(new Card());
-		cardsList.add(new Card());
-		cardsList.add(new Card());
-		cardsList.add(new Card());
-		cardsList.add(new Card());
-		cardsList.add(new Card());
-		cardsList.add(new Card());
-		cardsList.add(new Card());
-		cardsList.add(new Card());
-		cardsList.add(new Card());
-		cardsList.add(new Card());
+	public Dice getDice(int index) {
+		return dices.get(index);
 	}
+	
+	public List<Dice> getDiceList() {
+		return this.dices;
+	}
+	/*---------------------*/
+	
+	
+	
+	/*--------Guids&Cards--------*/
+	private void addGuilds() {
+		guildList.add(new Guild("Yellow", 10));
+		guildList.add(new Guild("White", 8));
+		guildList.add(new Guild("Purple", 8));
+		guildList.add(new Guild("Red", 5));
+		guildList.add(new Guild("Black", 4));
+		guildList.add(new Guild("Green", 3));
+		
+	}
+	
+	public void removeCard(int index) {
+		
+	}
+	/*---------------------------*/
+	
+	/*--------Player--------*/
+	
+	/*----------------------*/
+	
 	
 	
 }

@@ -16,7 +16,7 @@ public class MainPanel extends JPanel {
 
 	public MainPanel() {
 		
-		gc = new GameController();
+		gc = gc.getInstance();
 		
 		ImageIcon ii = new ImageIcon("F:/Workspace/aow-ppr/imagens/fundo2.png");
 		img = ii.getImage();
