@@ -1,31 +1,44 @@
 package model.cards;
 
-public class Card {
+import java.util.List;
+
+public class Card{
 	
-	private int cardPoints; //pontos de cada carta
-	private boolean daimyo; //tem especial ou nao
+	private Guild guild;
+	private BattleLine bl;
+	private int cardPoints; 
+	private boolean hasDaimyo; //se o (card/castelo) tem o especial
 	
-	public Card() {
-		
-	}
 	
-	public Card(int cardPoints, boolean isDaimyo) {
+	public Card(Guild guild, BattleLine bl, int cardPoints) {
+		super();
+		this.guild = guild;
+		this.bl = bl;
 		this.cardPoints = cardPoints;
-		this.daimyo = isDaimyo;
+		this.hasDaimyo = true;
 	}
 
-	
+	public Card(int cardPoints, boolean daimyo) {
+		this.cardPoints = cardPoints;
+		this.hasDaimyo = daimyo;
+
+	}
+
 	public int getCardPoints() {
 		return this.cardPoints;
 	}
+	
+	public Guild getGuild() {
+		return guild;
+	}
 
-	
-	public boolean getDaimyo() {
-		return this.daimyo;
+	public BattleLine getBattleLine() {
+		return bl;
+	}
+
+	public boolean hasDaimyo() {
+		return this.hasDaimyo;
 	}
 	
-	public String toString() {
-		return  super.toString() + " " + cardPoints + " " + daimyo;
-	}
 
 }
