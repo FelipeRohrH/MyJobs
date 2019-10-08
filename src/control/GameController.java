@@ -3,9 +3,11 @@ package control;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Stack;
 
 import model.BoardModel;
 import model.Dice;
+import model.cards.Card;
 import model.player.Player;
 
 public class GameController {
@@ -14,14 +16,17 @@ public class GameController {
 	private BoardModel bm;
 	private Random randomValue;
 
-	String name1; 
-	String name2;
+	private String name1; 
+	private String name2;
+	private Stack<Card> selectedCard;
+	
 	
 	private static GameController instance;
 	
 	private GameController() {
 		bm = new BoardModel();
 		randomValue = new Random();
+		selectedCard = new Stack();
 	}
 	
 	public synchronized static GameController getInstance(){
@@ -52,7 +57,7 @@ public class GameController {
 	
 	public void rollDices() {
 		for (Dice dice : bm.getDiceList()) {
-			dice.rollDiceValue(randomValue.nextInt(6));
+			dice.setValue(randomValue.nextInt(6));
 			notifyRolledDices(dice.getValue());
 		}
 			
@@ -69,26 +74,39 @@ public class GameController {
 	}
 	/* -----------------------------*/
 	
+	
+	
 	/* ----------- 	PLAYERS -----------*/
 	public void addPlayers(String name1, String name2) {
 		Player p1 = new Player(name1);
+		bm.addPlayer(p1);
 		Player p2 = new Player(name2);
-		
+		bm.addPlayer(p2);
+				
 		notifyAddedPlayers(p1.getName(), p2.getName());
 	}
 	
 	/* --------------------------------*/
 	
 	
-	/* ----------- CARDS -----------*/	
+	
+	/* ----------- CARDS -----------*/
+	public Card getCard(int index) {
+		return bm.getCard(index);
+	}
+	
+	public void addToSelectedCard(Card c) {
+		selectedCard.push(c);
+	}
+	
+	public void removeSelectedCard() {
+		selectedCard.pop();
+	}
+
 	public void addCards() {
 		
 	}
-	
-	public void removeCard() {
-		
-	}
-	
+
 	public void createCards() {
 		
 	}

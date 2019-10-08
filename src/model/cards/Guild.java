@@ -7,15 +7,14 @@ public class Guild {
 	
 	private String guildColor;
 	private int guildPoints;
-
-//	private List<Card> cardsModel; 
+	private List<Card> cardsModel; 
 	
 	public Guild(String color, int guildPoints) {
 		super();
 		this.guildColor = color;
 		this.guildPoints = guildPoints;
-//		cardsModel = new ArrayList<Card>(14);
-//		initCards();
+		cardsModel = new ArrayList<Card>(14) ;
+
 	}
 
 	public String getGuildColor() {

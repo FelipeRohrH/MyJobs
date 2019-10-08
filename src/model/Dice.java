@@ -2,7 +2,7 @@ package model;
 
 public class Dice {
 	//0, 1, 2, 3, 4, 5
-	private String diceValue;
+	private String value;
 	
 	private String[] possibleValues = {  
 								"Daimyo",  	 //0
@@ -14,15 +14,15 @@ public class Dice {
 							 };
 	
 	public Dice() {
-		this.diceValue = "?";
+		
 	}
 	
-	public String rollDiceValue(int index) {
-		return this.diceValue = this.possibleValues[index];
+	public String setValue(int index) {
+		return this.value = this.possibleValues[index];
 	}
 	
 	public String getValue() {
-		return this.diceValue;
+		return this.value;
 	}
 
 	
