@@ -1,35 +1,28 @@
 package control.command;
 
 import control.GameController;
-import model.cards.Card;
 
 public class SelectCardCommand extends GameFluxCommand{
 	
 	private int cardIndex;
-	private Card selectedCard;
 	
-	public SelectCardCommand(GameController gc, int cardIndex) {
+	public SelectCardCommand(GameController gc, int index) {
 		super(gc);
-		this.cardIndex = cardIndex;
+		this.cardIndex = index;
 	}
 
 	@Override
 	public void execute() {
-		Card selectedCard = GameController.getInstance().getCard(cardIndex);
-		GameController.getInstance().addToSelectedCard(selectedCard);
+		gc.addToCardStack(gc.getCard(cardIndex));
+//		System.out.println(gc.getCard(cardIndex).toString());
 		
 	}
 
 	@Override
 	public void undo() {
-		GameController.getInstance().removeSelectedCard();
+		gc.removeFromCardStack();
 		
 	}
 
-	@Override
-	public void redo() {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

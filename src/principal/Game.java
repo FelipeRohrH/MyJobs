@@ -1,6 +1,8 @@
 package principal;
 import java.awt.EventQueue;
+import java.io.IOException;
 
+import view.FirstFrame;
 import view.GameFrame;
 
 public class Game {
@@ -11,8 +13,11 @@ public class Game {
 
 			@Override
 			public void run() {
-				GameFrame tela = new GameFrame();
-				tela.setVisible(true);
+				
+				FirstFrame f;
+				f = new FirstFrame();
+				f.setVisible(true);
+
 			}});
 
 	}

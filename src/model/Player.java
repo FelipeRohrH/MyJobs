@@ -1,22 +1,23 @@
 package model;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import model.cards.builder.Card;
+
 public class Player {
 	
 	private String name;
 	private int points;
-//	private List<Guild> conqueredClans = new ArrayList<Guild>();
-	
-///
-	public Player() {
-		
-	}
+
+	private Map<Guild, List<Card>> myCards; 
 	
 	public Player(String name) {
 		super();
 		this.name = name;
-		
+		this.myCards = new HashMap<Guild, List<Card>>();
 	}
-///
 	
 	public String getName() {
 		return name;
@@ -30,18 +31,10 @@ public class Player {
 		this.points = points;
 	}
 	
-//	public List<Guild> getConqueredClans() {
-//		return conqueredClans;
-//	}
-//	
-//	public void addConqueredClan(Guild g) {
-//		this.conqueredClans.add(g);
-//	}
-	
-	@Override
-	public String toString() {
-		return getName() + " ";
+	public Map<Guild, List<Card>> getMyCards() {
+		return this.myCards;
 	}
 	
-	
+
+		
 }
